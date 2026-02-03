@@ -44,6 +44,18 @@ nodejs_setup() {
     VALIDATE $? "installing npm"
 }
 
+java_setup() {
+    dnf install maven -y &>>$LOGS_FILE
+    VALIDATE $? "Installing maven"
+
+    cd /app
+    mvn clean package &>>$LOGS_FILE
+    VALIDATE $? "Installing and Building $app_name"
+
+    mv target/$app_name-1.0.jar $app_name.jar &>>$LOGS_FILE
+    VALIDATE $? "renaming and moving to /app"
+}
+
 app_setup() {
     id roboshop &>>$LOGS_FILE
     if [ $? -ne 0 ]; then
