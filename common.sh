@@ -95,3 +95,5 @@ app_restart() {
     systemctl restart $app_name
     VALIDATE $? "Restarting $app_name"
 }
+
+1
