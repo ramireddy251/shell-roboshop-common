@@ -57,6 +57,15 @@ java_setup() {
     VALIDATE $? "renaming and moving to /app"
 }
 
+python_setup() {
+    dnf install python3 gcc python3-devel -y &>>$LOGS_FILE
+    VALIDATE $? "Installing python3"
+
+    cd /app
+    pip3 install -r requirements.txt &>>$LOGS_FILE
+    VALIDATE $? "installing requirements.txt"
+}
+
 app_setup() {
     id roboshop &>>$LOGS_FILE
     if [ $? -ne 0 ]; then
