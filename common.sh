@@ -9,6 +9,7 @@ Y="\e[33m"
 N="\e[0m"
 SCRIPT_DIR=$PWD
 MONGODB_HOST=mongodb.ramireddy.co.in
+MYSQL_HOST=mysql.ramireddy.co.in
 
 
 CHECK_ROOT(){
